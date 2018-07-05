@@ -33,7 +33,7 @@ class AppFrame(Frame):
         root.geometry("480x800")  # window size
         root.configure(background="#34495E")
         #photo_g = PhotoImage(file="green_house3.png")
-        conn = pymysql.connect(host='localhost', user='root', password='Lm19orange@22', db='josc')
+        conn = pymysql.connect(host='localhost', user='root', password='########', db='#####')
         a = conn.cursor()
         sql = 'SELECT * FROM assigned_jobs;'
         a.execute(sql)
@@ -84,7 +84,7 @@ class AppFrame(Frame):
         """Submits username that is entered to the database and checks for a match,
         then returns the user_id that is found for that username. """
         username = self.entry_username.get()
-        conn = pymysql.connect(host='localhost', user='root', password='Lm19orange@22', db='josc')
+        conn = pymysql.connect(host='localhost', user='root', password='######', db='#####')
         with conn:
             a = conn.cursor()
             a.execute('SELECT User_ID FROM user WHERE UserName = %s;',(username))
@@ -136,7 +136,7 @@ class AppFrame(Frame):
         """Changes status on status button"""
         sql_status_update = 'UPDATE job SET Job_Status = "Complete" WHERE Job_ID = '+str(item[0])+';'
         print (sql_status_update)
-        conn = pymysql.connect(host='localhost', user='root', password='Lm19orange@22', db='josc')
+        conn = pymysql.connect(host='localhost', user='root', password='#######', db='######')
         a = conn.cursor()
         a.execute(sql_status_update)
         conn.commit()
@@ -150,7 +150,7 @@ class AppFrame(Frame):
         tech_check = 'SELECT Tech_ID FROM technician WHERE User_ID = ' + str(found_user) + ';'
         admin_check = 'SELECT Admin_ID FROM admin WHERE User_ID = ' + str(found_user) + ';'
         client_check = 'SELECT Client_ID FROM client WHERE User_ID = ' + str(found_user) + ';'
-        conn = pymysql.connect(host='localhost', user='root', password='Lm19orange@22', db='josc')
+        conn = pymysql.connect(host='localhost', user='root', password='#######', db='######')
         a = conn.cursor()
         a.execute(tech_check)
         utype_data = a.fetchall()
